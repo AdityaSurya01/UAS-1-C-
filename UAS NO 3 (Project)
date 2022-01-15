@@ -1,0 +1,119 @@
+#include <iostream>
+#include <string.h>
+#include <conio.h>
+#include <stdlib.h>
+
+using namespace std;
+#define ppn 0.05 
+const int diskon = 5000;
+void Ucapan(string nama){
+	cout <<"     Terima kasih " << nama << " telah Memesan Makanan di KFC"<<endl;
+	cout <<"			Selamat Menikmati"<<endl;
+}
+
+int main(){
+    char nama[10],menu[50], back;
+    string hasil, inputnama;
+    int jumlah, makanan, makan, bayar, total, kurang, bonus, pajak, kembalian,
+        harga[5]={3000, 8000, 10000, 12000, 15000}, i=0;
+    bool saldo;
+
+    do{
+        system("CLS");
+        cout<<"========================= RMP ========================="<<endl;
+        cout<<"================= Rumah Makan Pesisir ================="<<endl;
+        cout<<"=============== Murah || Enak || Halal ================"<<endl;
+        cout<<endl;
+        cout<<"Masukkan Nama Anda : "; cin>>nama;
+        cout<<"Pilihan menu yang tersedia..."<<endl;
+        cout<<"-------------------------------------------------------"<<endl;
+        cout<<"|    [1] Mendoan            = Rp 3.000               |"  <<endl;
+        cout<<"|    [2] Kupat tahu         = Rp 8.000               |"  <<endl;
+        cout<<"|    [3] Lotek              = Rp 10.000              |"  <<endl;
+        cout<<"|    [4] Soto ayam          = Rp 12.000              |"  <<endl;
+        cout<<"|    [5] Nasi rames spesial = Rp 15.000              |"  <<endl;
+        cout<<"-------------------------------------------------------"<<endl;
+
+
+        cout<<"     (Masukkan Menu Makanan berdasarkan Nomor)"<<endl;
+        cout<<" Silahkan Pilih Makanan Anda : "; cin >> makanan;
+
+        //Percabangan
+        switch(makanan){
+            case 1:
+                strcpy(menu,"Mendoan");
+                break;
+            case 2:
+                strcpy(menu,"Kupat tahu");
+                i=1;
+                break;
+            case 3:
+                strcpy(menu,"Lotek");
+                i=2;
+                break;
+            case 4:
+                strcpy(menu,"Soto ayam");
+                i=3;
+                break;
+            case 5:
+                strcpy(menu,"Nasi rames spesial");
+                i=4;
+                break;
+            default:
+                cout<<"Pilihan menu yang anda pilih tidak tersedia..."<<endl;
+                goto ulang;
+        //Akhir percabangan
+        }
+
+        cout<<"Anda memilih "<<menu<<endl;
+        cout<<endl;
+        cout<<"Jumlah makanan yang dibeli : ";cin>>jumlah;
+
+        makan = jumlah * harga[i];
+        pajak = makan * ppn;
+        total = pajak + makan;
+        cout<<endl;
+        cout<<"-------------------------------------------------------"<<endl;
+        cout<<"|               Rumah Makan Pesisir                   |"<<endl;
+        cout<<"-------------------------------------------------------"<<endl;
+        cout<<"\tNama Pemesan       : "     <<  nama     <<endl;
+        cout<<"\tMenu Makanan       : "     << menu     <<endl;
+        cout<<"\tJumlah Makanan     : "     <<  jumlah   <<" porsi" <<endl;
+        cout<<"\tHarga Makanan      : "     <<  harga[i] << " x "  << jumlah <<endl;
+        cout<<"\tPajak Restaurant   : "     <<  pajak    <<endl;
+        cout<<"\tJumlah Pembayaran  : "     <<  total    <<endl;
+
+		if(jumlah>=5){
+			bonus = total - diskon;
+			total = bonus;
+			cout << endl;
+			cout << "# Anda mendapatkan diskon Potongan Harga : Rp " << diskon <<" #"<< endl;
+			cout << "Total Pembayaran Setelah diskon  : Rp "<< total << endl;
+		}
+
+		cout << "--------------------------------------------" << endl;
+		cout << "Silahkan bayar disini 		 : Rp."; 		cin>>bayar;
+		cout << endl;
+
+		//Perulangan
+		while (saldo=bayar<total){
+			cout << "Saldo anda kurang, Silahkan bayar lagi : Rp. "; cin>>kurang;
+			bayar+=kurang;
+		};
+
+		kembalian=bayar-total;
+		cout << "Uang yang anda bayar \t\t\t Rp. " << bayar<<endl;
+		cout << "Uang kembalian \t\t\t\t Rp. "     << kembalian <<endl;
+		cout << "##################################################"<<endl;
+
+		ulang:
+            cout<<"Siapa nama lengkap anda : ";cin>>inputnama;
+			cout << "			[Y = ya / T = tidak]"<<endl;
+			cout << "		Apakah anda ingin memesan lagi ? [Y/T]  =  "; cin>>back;
+		}while (back=='Y'||back=='y');
+		cout << endl;
+		Ucapan(inputnama);
+        cout<<Ucapan<<endl;
+        cin.get();
+		return 0;
+}
