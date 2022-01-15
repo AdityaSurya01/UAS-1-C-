@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int main(){
+    char nama[10], perintah;
+    int a = 1;
+
+    cout<<"Masukan nama anda : "; cin>>nama;
+    do{
+        cout<<"====================================="<<endl;
+        cout<<"Selamat datang, "<<nama<<endl;
+        cout<<"Percobaan perulangan menggunkan while yang ke-"<<a<<endl;
+        cout<<"Tutup program ini? (y) : "; cin>>perintah;
+        a++;
+        }while(perintah!='y');
+        
+        return 0;
+    
+}
