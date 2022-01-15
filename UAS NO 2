@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int main(){
+    string nama[10]; 
+    char perintah;
+    int i = 1;
+
+        cout<<"============================================="<<endl;
+        cout<<"DAFTAR HADIR KELAS ALGORITMA DAM PEMROGRAMAN"<<endl;
+        cout<<"============================================="<<endl;
+        do{
+            cout<<"Selamat datang, masukan nama : "; cin>>nama[i];
+            cout<<"Tutup presensi ini? (y) : "; cin>>perintah;
+            i++;
+            }while(perintah!='y');
+    cout<<"============================================"<<endl;
+    cout<<"MAHASISWA YANG HADIR"<<endl;
+    cout<<"============================================"<<endl;
+    for(string DSRA : nama)
+    {
+    cout<<DSRA<<endl;
+    }
+    cin.get();
+    return 0;
+    }
